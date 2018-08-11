@@ -1,9 +1,62 @@
 <html>
 <head>
 <title> WRestore Application </title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 
 <body>
-    <p> This is the home page</p>
+
+<h1> Legend</h1>
+<h2> Step 1: Compare the two maps below to access how the practices are allocated in the two Suggestions. <h2></h2>
+<p> click inside any subbsin to learn about practice proposed in sub basin</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141196.9995469255!2d-88.68421596046798!3d39.74919222919416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50bcd9f81b1d%3A0x7e102fcecb32ec72!2sIndiana%2C+USA!5e0!3m2!1sen!2sin!4v1533992822789" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+<h2> Step 2: Compare the two maps below to access how the practices are allocated in the two Suggestions. <h2></h2>
+<p> click inside any subbsin to learn about practice proposed in sub basin</p>
+<select>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>
+
+  <div id="chart_div"></div>
 </body>
 </html>
