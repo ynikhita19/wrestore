@@ -1,93 +1,176 @@
 <html>
+
 <head>
-<title> WRestore Application </title>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+  <title> WRestore Application </title>
+  <style>
+    .labels{
+      color:white;
+      font-size: 25px;
+    }
+    iframe {
+      margin: 10px;
+    }
+    .suggestionBox {
+      border: 5px solid grey;
+      display: inline-block;
+      padding: 20px;
+      margin: 10px;
+    }
+    .map1{
+      background: red;
+    }
+    .map2{
+      background: green;
+    }
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+    .active,
+    .accordion:hover {
+      background-color: #ccc;
+    }
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
+    .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+    }
+  </style>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
 
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'Slices');
+      data.addRows([
+        ['Mushrooms', 3],
+        ['Onions', 1],
+        ['Olives', 1],
+        ['Zucchini', 1],
+        ['Pepperoni', 2]
+      ]);
+
+      // Set chart options
+      var options = {
+        'title': 'How Much Pizza I Ate Last Night',
+        'width': 400,
+        'height': 300
+      };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+   
+
+  </script>
 
 </head>
 
 <body>
 
-<h1> Legend</h1>
-    <div>
-        <input type="checkbox" name="option1" value="croprotation"> Crop Rotation
-        <input type="checkbox" name="option2" value="covercrops"> Cover Crops
-        <input type="checkbox" name="option3" value="stripcropping"> Strip Cropping
-        <input type="checkbox" name="option4" value="filterstrips"> Filter Strips
-        <input type="checkbox" name="option5" value="grasswaterways"> Grasswaterways
-        <input type="checkbox" name="option6" value="conservationtillage"> Conservation Tillage
-        <input type="checkbox" name="option7" value="wetlands"> Wet Lands
+  <h1> Legend</h1>
+  <div>
+    <input type="checkbox" name="option1" value="croprotation"> Crop Rotation
+    <input type="checkbox" name="option2" value="covercrops"> Cover Crops
+    <input type="checkbox" name="option3" value="stripcropping"> Strip Cropping
+    <input type="checkbox" name="option4" value="filterstrips"> Filter Strips
+    <input type="checkbox" name="option5" value="grasswaterways"> Grasswaterways
+    <input type="checkbox" name="option6" value="conservationtillage"> Conservation Tillage
+    <input type="checkbox" name="option7" value="wetlands"> Wet Lands
+  </div>
+
+  <button class="accordion">
+    <h2> Step 1: Compare the two maps below to access how the practices are allocated in the two Suggestions. </h2>
+  </button>
+  <div style="display: block" class="panel">
+    <p> click inside any subbsin to learn about practice proposed in sub basin</p>
+    <div class="map1 suggestionBox">
+        <div class="labels">Suggestion 1</div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141196.9995469255!2d-88.68421596046798!3d39.74919222919416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50bcd9f81b1d%3A0x7e102fcecb32ec72!2sIndiana%2C+USA!5e0!3m2!1sen!2sin!4v1533992822789"
+        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
-<h2> Step 1: Compare the two maps below to access how the practices are allocated in the two Suggestions. </h2>
-<p> click inside any subbsin to learn about practice proposed in sub basin</p>
-<div>
-    Suggestion 1<br>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141196.9995469255!2d-88.68421596046798!3d39.74919222919416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50bcd9f81b1d%3A0x7e102fcecb32ec72!2sIndiana%2C+USA!5e0!3m2!1sen!2sin!4v1533992822789" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
 
-<div>
-        Suggestion 2<br>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141196.9995469255!2d-88.68421596046798!3d39.74919222919416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50bcd9f81b1d%3A0x7e102fcecb32ec72!2sIndiana%2C+USA!5e0!3m2!1sen!2sin!4v1533992822789" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
+    <div class="map2 suggestionBox">
+      <div class="labels">Suggestion 2</div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141196.9995469255!2d-88.68421596046798!3d39.74919222919416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50bcd9f81b1d%3A0x7e102fcecb32ec72!2sIndiana%2C+USA!5e0!3m2!1sen!2sin!4v1533992822789"
+        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </div>
 
-<h2> Step 2: Now assess if the two Suggestions above meet your expectations for goalsat a specific sub basin.</h2>
-<p> Choose a sub basin to compare</p>
-<select>
-    <option value="subbasin1">Subbasin 1</option>
-    <option value="subbasin2">Subbasin 2</option>
-    <option value="subbasin3">Subbasin 3</option>
-    <option value="subbasin4">Subbasin 4</option>
-  </select>
+  <button class="accordion">
+    <h2> Step 2: Now assess if the two Suggestions above meet your expectations for goalsat a specific sub basin.</h2>
+  </button>
+  <div class="panel">
+    <p> Choose a sub basin to compare</p>
+    <select>
+      <option value="subbasin1">Subbasin 1</option>
+      <option value="subbasin2">Subbasin 2</option>
+      <option value="subbasin3">Subbasin 3</option>
+      <option value="subbasin4">Subbasin 4</option>
+    </select>
 
-  <div id="chart_div"></div>
+    <div id="chart_div"></div>
 
-  <h2> Step 3: Now assess if you like how the practices proposed by the suggestions affect the rise of the watershed landscape. </h2>
+  </div>
+
+  <h2> Step 3: Now assess if you like how the practices proposed by the suggestions affect the rise of the watershed landscape.
+    </h2>
   <h2> Step 4: Time to vote! Provide a rating for each of the suggestions shown above. </h2>
 
   <div>
-      Suggestion 1 <br>
-      Rate the design and performance of this alternative
-    </div>
-  <div>
-        Suggestion 1 <br>
-        Rate the design and performance of this alternative
+    Suggestion 1
+    <br> Rate the design and performance of this alternative
   </div>
-  <h2> Step 5: Click on the blue button to see additional suggestions or click on the orange button if you have rated all of them. </h2>
+  <div>
+    Suggestion 1
+    <br> Rate the design and performance of this alternative
+  </div>
+  <h2> Step 5: Click on the blue button to see additional suggestions or click on the orange button if you have rated all of them.
+    </h2>
 
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+        </script>
 
 </body>
+
 </html>
